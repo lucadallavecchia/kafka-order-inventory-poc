@@ -1,1 +1,2 @@
-rootProject.name = 'kafka-order-inventory-poc'
+rootProject.name = "kafka-order-inventory-poc"
+include("order-service", "inventory-service")

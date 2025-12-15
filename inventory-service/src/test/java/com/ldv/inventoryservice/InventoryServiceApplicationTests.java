@@ -1,10 +1,10 @@
-package com.ldv.kafka_order_inventory_poc;
+package com.ldv.inventoryservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class KafkaOrderInventoryPocApplicationTests {
+class InventoryServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
