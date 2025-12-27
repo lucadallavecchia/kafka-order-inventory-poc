@@ -11,3 +11,8 @@ This project is a **proof of concept** to demonstrate an **event-driven architec
 - **Apache Kafka**: handles the asynchronous communication between services
 
 The goal of this PoC is to showcase **decoupled microservices**, **event-based communication**, and **Kafka fundamentals** in a simple and easy-to-run setup.
+
+
+## Commands
+docker-compose up --build (if case of changes in java classes/application.properties)
+docker-compose up (in case of no changes)
