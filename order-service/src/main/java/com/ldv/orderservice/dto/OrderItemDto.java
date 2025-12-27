@@ -1,9 +1,10 @@
 package com.ldv.orderservice.dto;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public record OrderItemDto(
-        String productId,
+        UUID productId,
         Integer quantity,
         BigDecimal price
 ) {
