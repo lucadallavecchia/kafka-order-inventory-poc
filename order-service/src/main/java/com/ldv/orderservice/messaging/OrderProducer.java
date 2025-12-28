@@ -18,9 +18,12 @@ public class OrderProducer {
     private String topicName;
 
     public void sendOrderEvent(OrderPlacedEvent event) {
-        log.info("### PRODUCER: Sending event for order Id: {}", event.orderId());
+        // Key will be the order id -> to be sure that order of messages related to this order will be satisfied
+        String key = event.orderId().toString();
 
-        // Inviamo l'ID dell'ordine come "payload" del messaggio
-        kafkaTemplate.send(topicName, event);
+        log.info("### PRODUCER: Sending event to topic {} [Key: {}] [Payload: {}]", topicName, key, event);
+
+        // Messages partitioned by key (Same id = same partition --> in kafka message order just in the same partition(
+        kafkaTemplate.send(topicName, key, event);
     }
 }
