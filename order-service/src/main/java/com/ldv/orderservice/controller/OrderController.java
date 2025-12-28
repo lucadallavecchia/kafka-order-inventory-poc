@@ -1,7 +1,7 @@
 package com.ldv.orderservice.controller;
 
-import com.ldv.orderservice.dto.OrderRequest;
-import com.ldv.orderservice.dto.OrderResponse;
+import com.ldv.orderservice.controller.dto.OrderRequest;
+import com.ldv.orderservice.controller.dto.OrderResponse;
 import com.ldv.orderservice.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

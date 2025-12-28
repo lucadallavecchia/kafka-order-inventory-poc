@@ -1,4 +1,4 @@
-package com.ldv.orderservice.dto;
+package com.ldv.orderservice.controller.dto;
 
 import java.math.BigDecimal;
 import java.util.UUID;

@@ -1,11 +1,12 @@
 package com.ldv.orderservice.service;
 
 
-import com.ldv.orderservice.dto.OrderRequest;
-import com.ldv.orderservice.dto.OrderResponse;
+import com.ldv.orderservice.controller.dto.OrderRequest;
+import com.ldv.orderservice.controller.dto.OrderResponse;
 import com.ldv.orderservice.entity.Order;
 import com.ldv.orderservice.mapper.OrderMapper;
 import com.ldv.orderservice.messaging.OrderProducer;
+import com.ldv.orderservice.messaging.dto.OrderPlacedEvent;
 import com.ldv.orderservice.model.OrderStatus;
 import com.ldv.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,12 @@ public class OrderService {
         Order order = mapper.toEntity(request);
         order.setStatus(OrderStatus.PENDING); // default status is PENDING
 
+        // save in db
         Order savedOrder = repository.save(order);
-        orderProducer.sendOrderEvent(savedOrder.getId().toString());
+
+        // send message
+        OrderPlacedEvent event = mapper.toEvent(savedOrder);
+        orderProducer.sendOrderEvent(event);
 
         return mapper.toResponse(savedOrder);
     }
