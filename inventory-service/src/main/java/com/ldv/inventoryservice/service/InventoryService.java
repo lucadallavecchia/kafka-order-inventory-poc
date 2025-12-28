@@ -31,6 +31,20 @@ public class InventoryService {
         return inventoryRepository.save(inventory);
     }
 
+    @Transactional
+    public void deductStock(UUID productId, Integer quantity) {
+        Inventory inventory = inventoryRepository.findByProductId(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found: " + productId));
+
+        if (inventory.getStockQuantity() < quantity) {
+            throw new RuntimeException("Insufficient stock for product: " + productId); //TODO improve this
+        }
+
+        inventory.setStockQuantity(inventory.getStockQuantity() - quantity);
+        inventoryRepository.save(inventory);
+        log.info("Stock updated for product {}. New quantity: {}", productId, inventory.getStockQuantity());
+    }
+
     @Transactional(readOnly = true)
     public List<Inventory> getAllInventory() {
         log.info("Fetching all inventory items");
