@@ -16,7 +16,7 @@ dependencies {
     // Postgres
     runtimeOnly 'org.postgresql:postgresql'
 
-    // Lombok and mapstruct
+    // Lombok & MapStruct
     implementation 'org.mapstruct:mapstruct:1.6.3'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
