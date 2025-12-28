@@ -16,3 +16,6 @@ The goal of this PoC is to showcase **decoupled microservices**, **event-based c
 ## Commands
 docker-compose up --build (if case of changes in java classes/application.properties)
 docker-compose up (in case of no changes)
+
+## Kafka UI
+http://localhost:8090/

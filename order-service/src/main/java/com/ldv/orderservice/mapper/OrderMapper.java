@@ -3,6 +3,7 @@ package com.ldv.orderservice.mapper;
 
 import com.ldv.orderservice.dto.OrderItemDto;
 import com.ldv.orderservice.dto.OrderRequest;
+import com.ldv.orderservice.dto.OrderResponse;
 import com.ldv.orderservice.entity.Order;
 import com.ldv.orderservice.entity.OrderItem;
 import org.mapstruct.Mapper;
@@ -14,8 +15,14 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface OrderMapper {
 
+    // Da Request (Record) a Entity
     Order toEntity(OrderRequest request);
 
-    OrderItem toOrderItem(OrderItemDto dto);
+    // Da Entity a Response (Record)
+    OrderResponse toResponse(Order order);
 
+    // Gestione degli Item
+    OrderItem toOrderItemEntity(OrderItemDto dto);
+
+    OrderItemDto toOrderItemDto(OrderItem entity);
 }
