@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "67d3491d-4835-43b3-8dde-7d5ca95121a1",
+		"name": "Kafka Order Inventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4064861"
+	},
+	"item": [
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n          \"customerId\": \"CUST-LUCAA\",\n          \"items\": [\n            {\n              \"productId\": \"350e8400-e29b-41d4-a716-446655440000\",\n              \"quantity\": 150,\n              \"price\": 1200.50\n            }\n          ]\n     }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/api/orders \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n          \"customerId\": \"CUST-12345\",\n          \"items\": [\n            {\n              \"productId\": \"ad27027d-0800-47b6-963e-6395e26b864a\",\n              \"quantity\": 1,\n              \"price\": 1200.50\n            },\n            {\n              \"productId\": \"8540026e-4f36-476c-8511-66774900669b\",\n              \"quantity\": 3,\n              \"price\": 25.00\n            }\n          ]\n     }'"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Stock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": \"050e8400-e29b-41d4-a716-446655440000\",\n    \"quantity\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/inventory/stock-update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"inventory",
+						"stock-update"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8081/api/inventory/stock-update \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"productId\": \"550e8400-e29b-41d4-a716-446655440000\",\n           \"quantity\": 100\n         }'"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/inventory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"inventory"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:8081/api/inventory"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:8081/api/inventory"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "orderId",
+			"value": ""
+		}
+	]
+}
