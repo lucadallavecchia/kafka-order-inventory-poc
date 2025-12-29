@@ -14,6 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.UUID;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -36,6 +39,25 @@ public class OrderService {
         orderProducer.sendOrderEvent(event);
 
         return mapper.toResponse(savedOrder);
+    }
+
+    @Transactional
+    public void updateOrderStatus(UUID orderId, OrderStatus newStatus) {
+        Order order = repository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found: " + orderId));
+
+        order.setStatus(newStatus);
+
+        repository.save(order);
+
+        log.info("Order {} successfully updated to {} in Database", orderId, newStatus);
+    }
+
+    @Transactional(readOnly = true)
+    public List<OrderResponse> getAllOrders() {
+        return repository.findAll().stream()
+                .map(mapper::toResponse)
+                .toList();
     }
 
 }
